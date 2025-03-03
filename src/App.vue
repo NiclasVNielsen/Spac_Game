@@ -95,6 +95,7 @@ const smoothTyping = (index, event) => {
 form, section
   display: flex
 input
+  text-transform: uppercase 
   width: 2em
   height: 2em
   font-size: 2em

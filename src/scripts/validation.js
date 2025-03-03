@@ -2,7 +2,8 @@ import * as data from './data'
 
 export const generateWord = () => {
     const randomNumber = getRandomNumberInRange(0, data.WordsArray.value.length - 0.000000001)
-    data.Word.value = data.WordsArray.value[randomNumber]
+    data.Word.value = data.WordsArray.value[randomNumber].toUpperCase()
+    console.log(data.Word.value)
     return 
 }
 
@@ -27,7 +28,7 @@ export const formatInput = (word) => {
             return null
     }
 
-    const result = word.join("")
+    const result = word.join("").toUpperCase()
     return result
 }
 
