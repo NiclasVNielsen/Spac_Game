@@ -7,19 +7,16 @@ export const generateWord = () => {
 
 
 /* 
-    word is an array
+    Takes the input as an array, validates if it's filled out correctly and turns into a string
 */
 export const formatInput = (word) => {
-    /* Failsafe only 1 character in every slot is accepted (not 0 or < 1)*/
-    for(let i = 0; i < word.length; i++){
-        if(word[i].length != 1){
-            console.log("Wrong Input")
-            return null
-        }
-    }
-    if(word.length != data.Word.value.length){
-        console.log("Wrong Input")
+    /* Failsafe Only pass if full word is typed on */
+    if(word.length != data.Word.value.length)
         return null
+    /* Failsafe Only 1 character in every slot is accepted (not 0 or < 1)*/
+    for(let i = 0; i < word.length; i++){
+        if(word[i].length != 1)
+            return null
     }
 
     const result = word.join("")

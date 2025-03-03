@@ -5,12 +5,15 @@ import { ref, watch } from 'vue'
 
 val.generateWord()
 const response = ref("")
-response.value = val.validate("notapple")
 
 const input = ref([])
 
 const submitInput = () => {
-  val.formatInput(input.value)
+  const formattetInput = val.formatInput(input.value)
+  if(formattetInput == null)
+    return
+
+  response.value = val.validate(formattetInput)
 }
 
 watch(input.value, () => {
@@ -22,13 +25,10 @@ watch(input.value, () => {
 <template>
   <main>
     {{ response }}
-    {{ data.Word.value.length }}
-    {{ input }}
     <form>
       <template v-for="(char, index) in data.Word.value.length">
         <input type="text" v-model="input[index]">
       </template>
-      <div @click="submitInput()">Validate</div>
     </form>
   </main>
 </template>
