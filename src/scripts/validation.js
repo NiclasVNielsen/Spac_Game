@@ -1,10 +1,18 @@
 import * as data from './data'
 
 export const generateWord = () => {
-    data.Word.value = "pineapple"
+    const randomNumber = getRandomNumberInRange(0, data.WordsArray.value.length - 0.000000001)
+    data.Word.value = data.WordsArray.value[randomNumber]
     return 
 }
 
+/* 
+    Source:
+    https://keploy.io/blog/community/javascript-random-number
+*/
+const getRandomNumberInRange = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min)
+}
 
 /* 
     Takes the input as an array, validates if it's filled out correctly and turns into a string
