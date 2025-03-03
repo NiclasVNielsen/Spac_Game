@@ -14,8 +14,12 @@ export const formatInput = (word) => {
     for(let i = 0; i < word.length; i++){
         if(word[i].length != 1){
             console.log("Wrong Input")
-            return
+            return null
         }
+    }
+    if(word.length != data.Word.value.length){
+        console.log("Wrong Input")
+        return null
     }
 
     const result = word.join("")

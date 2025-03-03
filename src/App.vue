@@ -1,7 +1,7 @@
 <script setup>
 import * as val from './scripts/validation'
 import * as data from './scripts/data'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 val.generateWord()
 const response = ref("")
@@ -12,6 +12,10 @@ const input = ref([])
 const submitInput = () => {
   val.formatInput(input.value)
 }
+
+watch(input.value, () => {
+  submitInput()
+})
 
 </script>
 
