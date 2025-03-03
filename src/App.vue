@@ -3,29 +3,43 @@ import * as val from './scripts/validation'
 import * as data from './scripts/data'
 import { ref, watch } from 'vue'
 
+/* 
+  Genereate starting word
+*/
 val.generateWord()
-const response = ref("")
 
 const input = ref([])
 
+/* 
+  Submits the input?
+*/
 const submitInput = () => {
   const formattetInput = val.formatInput(input.value)
   if(formattetInput == null)
     return
 
-  response.value = val.validate(formattetInput)
-  printResponse(formattetInput, response.value)
+  const response = val.validate(formattetInput)
+  printResponse(formattetInput, response)
 }
 
+/* 
+  Auto submit
+*/
 watch(input.value, () => {
   submitInput()
 })
 
+/* 
+  Array of previous attempts
+*/
 const attempts = ref({
   words: [],
   validations: []
 })
 
+/* 
+  Stores data in the array that gets printed
+*/
 const printResponse = (word, validation) => {
   attempts.value["words"].push(word)
   attempts.value["validations"].push(validation)
@@ -40,10 +54,12 @@ const smoothTyping = (index, event) => {
   
   if(event.code != "Backspace"){
     if(index != inputs.length - 1)
+      /* Move to next input */
       inputs[index].nextElementSibling.focus()
   }
   else{
     if(index != 0)
+      /* Move to previous input */
       inputs[index].previousElementSibling.focus()
   }
 }
