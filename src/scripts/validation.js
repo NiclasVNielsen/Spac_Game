@@ -15,7 +15,7 @@ export const formatInput = (word) => {
         return null
     /* Failsafe Only 1 character in every slot is accepted (not 0 or < 1)*/
     for(let i = 0; i < word.length; i++){
-        if(word[i].length != 1)
+        if(word[i] != null && word[i].length != 1)
             return null
     }
 
