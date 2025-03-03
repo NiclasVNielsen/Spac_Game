@@ -7,11 +7,30 @@ export const generateWord = () => {
 
 
 /* 
-    Returns array of results for every character in the inputet string
+    word is an array
+*/
+export const formatInput = (word) => {
+    /* Failsafe only 1 character in every slot is accepted (not 0 or < 1)*/
+    for(let i = 0; i < word.length; i++){
+        if(word[i].length != 1){
+            console.log("Wrong Input")
+            return
+        }
+    }
+
+    const result = word.join("")
+    console.log(result)
+    return result
+}
+
+
+/* 
+    Validates the entire input
+
+    Returns an array of results for every character in the inputet string
 */
 export const validate = (word) => {
-    console.log(word)
-
+    /* Failsafe if the input isn't the correct length */
     if(word.length != data.Word.value.length)
         return
 
@@ -22,17 +41,19 @@ export const validate = (word) => {
     */
     const answers = []
 
+    /* Calls function to validate every input */
     for(let i = 0; i < data.Word.value.length; i++){
         const result = validateCharacter(data.Word.value, i, word[i])
         answers.push(result)
     }
 
-    console.log(answers)
-
     return answers
 }
 
+
 /* 
+    Validates a single character
+
     word = the correct word
     index = the index of the correct word to match
     character = the character you are matching to the word
