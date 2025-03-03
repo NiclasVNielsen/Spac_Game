@@ -3,7 +3,7 @@ import * as val from './scripts/validation'
 import * as data from './scripts/data'
 
 val.generateWord()
-val.validate(data.Word)
+val.validate("notapple")
 </script>
 
 <template>
