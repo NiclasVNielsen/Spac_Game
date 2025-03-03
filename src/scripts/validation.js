@@ -1,7 +1,7 @@
 import * as data from './data'
 
 export const generateWord = () => {
-    data.Word.value = "pinapple"
+    data.Word.value = "pineapple"
     return 
 }
 
@@ -20,7 +20,6 @@ export const formatInput = (word) => {
     }
 
     const result = word.join("")
-    console.log(result)
     return result
 }
 
