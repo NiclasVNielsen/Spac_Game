@@ -36,6 +36,9 @@ watch(data.input.value, () => {
         <input class="inputs" maxlength="1" type="text" v-model="data.input.value[index]" @input="(event) => ih.smoothTyping(index, event)" @keydown="(event) => ih.smoothTypingHelper(index, event)">
       </template>
     </form>
+    <p v-if="!data.GameWon.value && data.isItFood.value == false">
+      I don't think that is food...
+    </p>
     <p v-if="!data.GameWon.value">
       *Tip: I'm currently v{{data.vEryCounter.value}}ry hungry*
     </p>

@@ -24,6 +24,15 @@ export const formatInput = (word) => {
 }
 
 /* 
+    Checks if the input is in the words array
+    returns: -1 | 0+
+*/
+export const isThatFood = (word) => {
+    const response = data.WordsArray.value.indexOf(word)
+    return response
+}
+
+/* 
     Validates the entire input
 
     Returns an array of results for every character in the inputet string

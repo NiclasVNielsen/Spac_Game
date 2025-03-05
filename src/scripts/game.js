@@ -18,6 +18,15 @@ export const submitInput = () => {
     if(formattetInput == null)
         return
 
+    const isThatFood = val.isThatFood(formattetInput.toLowerCase())
+    if(isThatFood == -1){
+        data.isItFood.value = false
+        return
+    }
+
+    data.isItFood.value = true
+
+
     const response = val.validate(formattetInput)
     pf.printResponse(formattetInput, response)
     pf.moreEs()

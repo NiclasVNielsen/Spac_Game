@@ -21,6 +21,9 @@ export const GameWon = ref(false)
 /* controls how vEry hungry the game is */
 export const vEryCounter = ref("e")
 
+/* Keeps track of whether or not the input is food */
+export const isItFood = ref(true)
+
 /* Array of previous attempts*/
 export const attempts = ref({
     words: [],
