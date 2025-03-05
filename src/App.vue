@@ -31,6 +31,7 @@ const submitInput = () => {
   printResponse(formattetInput, response)
   moreEs()
   resetInputs()
+  editPlaceholders(response)
 }
 
 /* 
@@ -102,6 +103,17 @@ const resetInputs = () => {
   inputs[0].focus()
 }
 
+/* 
+  Edits placeholders to be correct characters you have already guessed
+*/
+const editPlaceholders = (answers) => {
+  const inputs = document.querySelectorAll('.inputs')
+  answers.forEach((answer, index) => {
+    if(answer == 1)
+      inputs[index].placeholder = data.Word.value[index]
+  })
+}
+
 </script>
 
 <template>
@@ -136,7 +148,7 @@ const resetInputs = () => {
   text-align: center
 
 body
-  height: 100vh
+  min-height: 100vh
   display: flex
   justify-content: center
   align-items: center
