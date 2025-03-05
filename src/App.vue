@@ -76,6 +76,10 @@ const smoothTyping = (index, event) => {
   }
 }
 
+/* 
+  Handles cases where you wanna go backwards while on an empty input
+  and when you are typing in an input that already has a character
+*/
 const smoothTypingHelper = (index, event) => {
   const inputs = document.querySelectorAll('.inputs')
   if(event.code == "Backspace" && inputs[index].value == "")
