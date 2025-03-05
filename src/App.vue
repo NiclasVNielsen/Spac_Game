@@ -37,7 +37,7 @@ watch(data.input.value, () => {
       </template>
     </form>
     <p v-if="!data.GameWon.value && data.isItFood.value == false">
-      I don't think that is food...
+      Either thats not food or I'm a picky eater...
     </p>
     <p v-if="!data.GameWon.value">
       *Tip: I'm currently v{{data.vEryCounter.value}}ry hungry*
