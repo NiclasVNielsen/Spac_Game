@@ -12,6 +12,8 @@ const input = ref([])
 
 const vEryCounter = ref("e")
 
+const gameWon = ref(false)
+
 /* 
   more e's
 */
@@ -32,6 +34,7 @@ const submitInput = () => {
   moreEs()
   resetInputs()
   editPlaceholders(response)
+  didIWin(response)
 }
 
 /* 
@@ -114,6 +117,20 @@ const editPlaceholders = (answers) => {
   })
 }
 
+/* 
+
+*/
+const didIWin = (answers) => {
+  let nope = false
+  answers.forEach(answer => {
+    if(answer != 1)
+      nope = true
+  })
+
+  if(nope == false)
+    gameWon.value = true
+}
+
 </script>
 
 <template>
@@ -128,12 +145,15 @@ const editPlaceholders = (answers) => {
         {{ letter }}
       </div>
     </section>
-    <form>
+    <form v-if="!gameWon">
       <template v-for="(char, index) in data.Word.value.length">
         <input class="inputs" maxlength="1" type="text" v-model="input[index]" @input="(event) => smoothTyping(index, event)" @keydown="(event) => smoothTypingHelper(index, event)">
       </template>
     </form>
-    <p>
+    <p v-if="gameWon">
+      You Won! *Om Nom Nom Nom Nom!!* I LOVE {{ data.Word }}!
+    </p>
+    <p v-if="!gameWon">
       *Tip: I'm currently v{{vEryCounter}}ry hungry*
     </p>
   </main>
