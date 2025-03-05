@@ -15,3 +15,9 @@ export const GameWon = ref(false)
 
 /* controls how vEry hungry the game is */
 export const vEryCounter = ref("e")
+
+/* Array of previous attempts*/
+export const attempts = ref({
+    words: [],
+    validations: []
+})
