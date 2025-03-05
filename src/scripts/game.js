@@ -9,6 +9,7 @@ import * as pf from './playerFeedback'
      - Game actions
 */
 
+
 /* 
     Submits the input?
 */
@@ -34,6 +35,7 @@ export const generateWord = () => {
     data.Word.value = data.WordsArray.value[randomNumber].toUpperCase()
     return 
 }
+
 /* 
     Source:
     https://keploy.io/blog/community/javascript-random-number

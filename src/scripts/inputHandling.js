@@ -15,9 +15,10 @@ export const smoothTyping = (index, event) => {
 
     if(event.data != null){
         if(index != inputs.length - 1){
-        /* Move to next input */
-        if(inputs[index].value != "")
-            inputs[index].nextElementSibling.focus()
+            /* Move to next input */
+            if(inputs[index])
+                if(inputs[index].value != "")
+                    inputs[index].nextElementSibling.focus()
         }
     }
     else{

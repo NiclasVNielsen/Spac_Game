@@ -6,7 +6,6 @@ import * as data from './data'
 */
 
 
-
 /* 
     Takes the input as an array, validates if it's filled out correctly and turns into a string
 */
@@ -23,8 +22,6 @@ export const formatInput = (word) => {
     const result = word.join("").toUpperCase()
     return result
 }
-
-
 
 /* 
     Validates the entire input
