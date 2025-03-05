@@ -30,6 +30,7 @@ const submitInput = () => {
   const response = val.validate(formattetInput)
   printResponse(formattetInput, response)
   moreEs()
+  resetInputs()
 }
 
 /* 
@@ -86,6 +87,19 @@ const smoothTypingHelper = (index, event) => {
     inputs[index].previousElementSibling.focus()
   if(event.code != "Backspace" && inputs[index].value != "")
     inputs[index].nextElementSibling.focus()
+}
+
+/* 
+  Resets the inputs so you can type a new word
+*/
+const resetInputs = () => {
+  const inputs = document.querySelectorAll('.inputs')
+
+  input.value.forEach((inp, index) => {
+    input.value[index] = ""
+  })
+
+  inputs[0].focus()
 }
 
 </script>
