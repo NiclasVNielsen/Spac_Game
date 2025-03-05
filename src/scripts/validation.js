@@ -1,9 +1,12 @@
 import * as data from './data'
 
+/* 
+    Picks out a random word from the words array
+    and sets the Word value to the selected word
+*/
 export const generateWord = () => {
-    const randomNumber = getRandomNumberInRange(0, data.WordsArray.value.length - 0.000000001)
+    const randomNumber = getRandomNumberInRange(0, data.WordsArray.value.length)
     data.Word.value = data.WordsArray.value[randomNumber].toUpperCase()
-    console.log(data.Word.value)
     return 
 }
 

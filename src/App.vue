@@ -10,6 +10,15 @@ val.generateWord()
 
 const input = ref([])
 
+const vEryCounter = ref("e")
+
+/* 
+  more e's
+*/
+const moreEs = () => {
+  vEryCounter.value += "e"
+}
+
 /* 
   Submits the input?
 */
@@ -20,6 +29,7 @@ const submitInput = () => {
 
   const response = val.validate(formattetInput)
   printResponse(formattetInput, response)
+  moreEs()
 }
 
 /* 
@@ -51,11 +61,13 @@ const printResponse = (word, validation) => {
 */
 const smoothTyping = (index, event) => {
   const inputs = document.querySelectorAll('.inputs')
-  
-  if(event.code != "Backspace"){
-    if(index != inputs.length - 1)
+
+  if(event.data != null){
+    if(index != inputs.length - 1){
       /* Move to next input */
-      inputs[index].nextElementSibling.focus()
+      if(inputs[index].value != "")
+        inputs[index].nextElementSibling.focus()
+    }
   }
   else{
     if(index != 0)
@@ -64,10 +76,19 @@ const smoothTyping = (index, event) => {
   }
 }
 
+const smoothTypingHelper = (index, event) => {
+  const inputs = document.querySelectorAll('.inputs')
+  if(event.code == "Backspace" && inputs[index].value == "")
+    inputs[index].previousElementSibling.focus()
+  if(event.code != "Backspace" && inputs[index].value != "")
+    inputs[index].nextElementSibling.focus()
+}
+
 </script>
 
 <template>
   <main>
+    <h2>Guess the word!</h2>
     <section v-for="(word, wordIndex) in attempts['words']">
       <div v-for="(letter, letterIndex) in word" :class="{ 
         red: attempts['validations'][wordIndex][letterIndex] == 3,
@@ -79,21 +100,35 @@ const smoothTyping = (index, event) => {
     </section>
     <form>
       <template v-for="(char, index) in data.Word.value.length">
-        <input class="inputs" maxlength="1" type="text" v-model="input[index]" @keyup="(event) => smoothTyping(index, event)">
+        <input class="inputs" maxlength="1" type="text" v-model="input[index]" @input="(event) => smoothTyping(index, event)" @keydown="(event) => smoothTypingHelper(index, event)">
       </template>
     </form>
+    <p>
+      *Tip: I'm currently v{{vEryCounter}}ry hungry*
+    </p>
   </main>
 </template>
 
-<style lang="sass" scoped>
+<style lang="sass">
 *
   margin: 0
   padding: 0
   box-sizing: border-box
   font-family: "Comic Sans MS"
+  text-align: center
+
+body
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+
+main > p, main > h2
+  margin: 1rem 0
 
 form, section
   display: flex
+  justify-content: center
 input
   text-transform: uppercase 
   width: 2em
