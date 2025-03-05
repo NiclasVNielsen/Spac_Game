@@ -1,35 +1,31 @@
 <script setup>
-import * as val from './scripts/validation'
+import * as methods from './scripts/methods'
 import * as data from './scripts/data'
 import { ref, watch } from 'vue'
 
 /* 
   Genereate starting word
 */
-val.generateWord()
+methods.generateWord()
 
-const input = ref([])
 
-const vEryCounter = ref("e")
-
-const gameWon = ref(false)
 
 /* 
   more e's
 */
 const moreEs = () => {
-  vEryCounter.value += "e"
+  data.vEryCounter.value += "e"
 }
 
 /* 
   Submits the input?
 */
 const submitInput = () => {
-  const formattetInput = val.formatInput(input.value)
+  const formattetInput = methods.formatInput(data.input.value)
   if(formattetInput == null)
     return
 
-  const response = val.validate(formattetInput)
+  const response = methods.validate(formattetInput)
   printResponse(formattetInput, response)
   moreEs()
   resetInputs()
@@ -40,7 +36,7 @@ const submitInput = () => {
 /* 
   Auto submit
 */
-watch(input.value, () => {
+watch(data.input.value, () => {
   submitInput()
 })
 
@@ -87,7 +83,7 @@ const smoothTyping = (index, event) => {
 */
 const smoothTypingHelper = (index, event) => {
   const inputs = document.querySelectorAll('.inputs')
-  if(event.code == "Backspace" && inputs[index].value == "")
+  if(event.code == "Backspace" && inputs[index].value == "" && index != 0)
     inputs[index].previousElementSibling.focus()
   if(event.code != "Backspace" && inputs[index].value != "")
     inputs[index].nextElementSibling.focus()
@@ -99,8 +95,8 @@ const smoothTypingHelper = (index, event) => {
 const resetInputs = () => {
   const inputs = document.querySelectorAll('.inputs')
 
-  input.value.forEach((inp, index) => {
-    input.value[index] = ""
+  data.input.value.forEach((inp, index) => {
+    data.input.value[index] = ""
   })
 
   inputs[0].focus()
@@ -118,7 +114,7 @@ const editPlaceholders = (answers) => {
 }
 
 /* 
-
+  Checks if you won the game
 */
 const didIWin = (answers) => {
   let nope = false
@@ -128,7 +124,7 @@ const didIWin = (answers) => {
   })
 
   if(nope == false)
-    gameWon.value = true
+    data.GameWon.value = true
 }
 
 </script>
@@ -145,16 +141,16 @@ const didIWin = (answers) => {
         {{ letter }}
       </div>
     </section>
-    <form v-if="!gameWon">
+    <form v-if="!data.GameWon.value">
       <template v-for="(char, index) in data.Word.value.length">
-        <input class="inputs" maxlength="1" type="text" v-model="input[index]" @input="(event) => smoothTyping(index, event)" @keydown="(event) => smoothTypingHelper(index, event)">
+        <input class="inputs" maxlength="1" type="text" v-model="data.input.value[index]" @input="(event) => smoothTyping(index, event)" @keydown="(event) => smoothTypingHelper(index, event)">
       </template>
     </form>
-    <p v-if="gameWon">
+    <p v-if="data.GameWon.value">
       You Won! *Om Nom Nom Nom Nom!!* I LOVE {{ data.Word }}!
     </p>
-    <p v-if="!gameWon">
-      *Tip: I'm currently v{{vEryCounter}}ry hungry*
+    <p v-if="!data.GameWon.value">
+      *Tip: I'm currently v{{data.vEryCounter.value}}ry hungry*
     </p>
   </main>
 </template>
