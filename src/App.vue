@@ -36,11 +36,14 @@ watch(data.input.value, () => {
         <input class="inputs" maxlength="1" type="text" v-model="data.input.value[index]" @input="(event) => ih.smoothTyping(index, event)" @keydown="(event) => ih.smoothTypingHelper(index, event)">
       </template>
     </form>
+    <p v-if="!data.GameWon.value">
+      *Tip: I'm currently v{{data.vEryCounter.value}}ry hungry*
+    </p>
     <p v-if="data.GameWon.value">
       You Won! *Om Nom Nom Nom Nom!!* I LOVE {{ data.Word }}!
     </p>
-    <p v-if="!data.GameWon.value">
-      *Tip: I'm currently v{{data.vEryCounter.value}}ry hungry*
+    <p v-if="data.GameWon.value">
+      <a href="/">PLAY AGAIN!</a>
     </p>
   </main>
 </template>
