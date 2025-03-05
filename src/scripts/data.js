@@ -1,6 +1,11 @@
 import { ref } from "vue";
 import words from "./words.json"
 
+/* 
+    This file handles:
+     - All the data!
+*/
+
 /* Holds the array of all the words */
 export const WordsArray = ref(words.words)
 

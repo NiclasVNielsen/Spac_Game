@@ -1,18 +1,20 @@
 <script setup>
-import * as methods from './scripts/methods'
+
+import * as ih from './scripts/inputHandling'
+import * as game from './scripts/game'
 import * as data from './scripts/data'
 import { watch } from 'vue'
 
 /* 
   Genereate starting word
 */
-methods.generateWord()
+game.generateWord()
 
 /* 
   Auto submit
 */
 watch(data.input.value, () => {
-  methods.submitInput()
+  game.submitInput()
 })
 
 </script>
@@ -31,7 +33,7 @@ watch(data.input.value, () => {
     </section>
     <form v-if="!data.GameWon.value">
       <template v-for="(char, index) in data.Word.value.length">
-        <input class="inputs" maxlength="1" type="text" v-model="data.input.value[index]" @input="(event) => methods.smoothTyping(index, event)" @keydown="(event) => methods.smoothTypingHelper(index, event)">
+        <input class="inputs" maxlength="1" type="text" v-model="data.input.value[index]" @input="(event) => ih.smoothTyping(index, event)" @keydown="(event) => ih.smoothTypingHelper(index, event)">
       </template>
     </form>
     <p v-if="data.GameWon.value">
