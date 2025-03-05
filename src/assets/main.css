@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Comic Sans MS";
+  text-align: center;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main > p, main > h2 {
+  margin: 1rem 0;
+}
+
+form, section {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  text-transform: uppercase;
+  width: 2em;
+  height: 2em;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+section > div {
+  width: 2em;
+  height: 2em;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: solid 1px #222;
+  padding: 1px 2px;
+}
+
+.green {
+  background: green;
+}
+
+.yellow {
+  background: yellow;
+}
+
+.red {
+  background: red;
+}/*# sourceMappingURL=main.css.map */
