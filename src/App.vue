@@ -11,6 +11,11 @@ import { watch } from 'vue'
 game.generateWord()
 
 /* 
+  Force Word
+*/
+data.Word.value = "cookie".toUpperCase()
+
+/* 
   Auto submit
 */
 watch(data.input.value, () => {
@@ -21,7 +26,8 @@ watch(data.input.value, () => {
 
 <template>
   <main>
-    <h2>Guess the word!</h2>
+    <h2 v-if="!data.GameWon.value">Guess the word!</h2>
+    <h2 v-if="data.GameWon.value">You guessed the word!!!</h2>
     <section v-for="(word, wordIndex) in data.attempts.value['words']">
       <div v-for="(letter, letterIndex) in word" :class="{ 
         red: data.attempts.value['validations'][wordIndex][letterIndex] == 3,

@@ -26,7 +26,6 @@ export const submitInput = () => {
 
     data.isItFood.value = true
 
-
     const response = val.validate(formattetInput)
     pf.printResponse(formattetInput, response)
     pf.moreEs()
