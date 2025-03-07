@@ -28,5 +28,5 @@ npm run dev
 ### Feedback
 
 ```sh
-Is my documentation okay?
+- Is my documentation okay?
 ```
