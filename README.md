@@ -22,3 +22,11 @@ npm i
 ```sh
 npm run dev
 ```
+
+### ---------
+
+### Feedback
+
+```sh
+Is my documentation okay?
+```
