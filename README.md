@@ -30,3 +30,7 @@ npm run dev
 ```sh
 - Is my documentation okay?
 ```
+
+```sh
+- Do i commit/push to git to much/little?
+```
