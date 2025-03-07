@@ -13,7 +13,6 @@ game.generateWord()
 /* 
   Force Word
 */
-data.Word.value = "cookie".toUpperCase()
 
 /* 
   Auto submit

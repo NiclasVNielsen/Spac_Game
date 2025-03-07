@@ -14,18 +14,22 @@ import * as pf from './playerFeedback'
     Submits the input?
 */
 export const submitInput = () => {
+    /* Is the input valid? */
     const formattetInput = val.formatInput(data.input.value)
     if(formattetInput == null)
         return
 
+    /* Is the word in the array? */
     const isThatFood = val.isThatFood(formattetInput.toLowerCase())
     if(isThatFood == -1){
         data.isItFood.value = false
         return
     }
 
+    /* Reset variable */
     data.isItFood.value = true
 
+    /* Start a bunch of other processes */
     const response = val.validate(formattetInput)
     pf.printResponse(formattetInput, response)
     pf.moreEs()
@@ -45,6 +49,7 @@ export const generateWord = () => {
 }
 
 /* 
+    Get a random number
     Source:
     https://keploy.io/blog/community/javascript-random-number
 */
