@@ -8,7 +8,7 @@ Node.js (https://nodejs.org/en)
 
 ### Launching program
 ```sh
-Open a console and run the following commands
+Open the project folder in a console and run the following commands
 ```
 
 ### Install dependancies
