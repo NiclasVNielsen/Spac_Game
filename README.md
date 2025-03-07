@@ -28,9 +28,10 @@ npm run dev
 ### Feedback
 
 ```sh
-- Is my documentation okay?
+- Is my code documentation okay?
 ```
 
 ```sh
-- Do i commit/push to git to much/little?
+- Do i commit to git to much/little?
+    - Is the git documentation okay?
 ```
