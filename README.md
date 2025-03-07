@@ -1,5 +1,16 @@
 ## Project Setup
 
+### Requirements
+
+```sh
+Node.js (https://nodejs.org/en)
+```
+
+### Launching program
+```sh
+Open a console and run the following commands
+```
+
 ### Install dependancies
 
 ```sh
